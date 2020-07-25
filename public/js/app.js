@@ -16,4 +16,5 @@ weatherForm.addEventListener("submit",(e)=>{
             Data.textContent=`forecast:${data.description}`
                 }
     })
-})
+}) 
+console.log("hey")
