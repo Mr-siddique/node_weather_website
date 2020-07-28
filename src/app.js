@@ -2,6 +2,7 @@ const express = require("express")
 const path = require("path")
 const hbs = require("hbs")
 const app = express()
+const port = process.env.PORT || 3000
 const geoCode = require("./utils/geocode")
 const foreCast = require("./utils/forecast")
 
@@ -30,12 +31,12 @@ app.get("/weather", (req, res) => {
         const address = req.query.address
         geoCode(address, (error, { longitude, latitude, location } = {}) => {
             if (error) {
-                return res.send({error})
+                return res.send({ error })
             }
             foreCast(longitude, latitude, (error, { description, temperature, feels_like } = {}) => {
-                if(error)
-                return res.send({error})
-                res.send({description, temperature, location, feels_like })
+                if (error)
+                    return res.send({ error })
+                res.send({ description, temperature, location, feels_like })
             })
         })
     }
@@ -46,7 +47,7 @@ app.get("/help/*", (req, res) => {
 app.get("*", (req, res) => {
     res.render("404", { title: "404page", name: "mr_siddique", mgs: "page not found" })
 })
-app.listen(3000, (req, res) => {
-    console.log("server is up on port 3000")
+app.listen(port, (req, res) => {
+    console.log("server is up on port "+ port)
 })
 //req.query returns all the query strings in the browser
