@@ -13,8 +13,7 @@ weatherForm.addEventListener("submit",(e)=>{
             Data.textContent=""
         }else{
             error.textContent=`Location:${data.location}`
-            Data.textContent=`forecast:${data.description} & temperature: ${data.temperature}`
+            Data.textContent=`forecast:${data.description} & temperature: ${data.temperature} degrees out but feels like ${data.feels_like}degrees out & humidity:${data.humidity}`
                 }
     })
 }) 
-console.log("hey")

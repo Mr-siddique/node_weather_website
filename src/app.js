@@ -33,10 +33,10 @@ app.get("/weather", (req, res) => {
             if (error) {
                 return res.send({ error })
             }
-            foreCast(longitude, latitude, (error, { description, temperature, feels_like } = {}) => {
+            foreCast(longitude, latitude, (error, { description, temperature, feels_like ,humidity} = {}) => {
                 if (error)
                     return res.send({ error })
-                res.send({ description, temperature, location, feels_like })
+                res.send({ description, temperature, location, feels_like ,humidity})
             })
         })
     }
